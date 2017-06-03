@@ -1,9 +1,17 @@
+/*
+ * Author : Fadhlan Ridhwanallah
+ * Date : 31 Maret 2017
+ * Modified : 4 Juni 2017
+ */
+
 package com.service.player.model;
 
 import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,6 +20,7 @@ import javax.persistence.Table;
 public class Player {
 	
 	 @Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
      @Column(name = "id_player")
 	 private int id_player;
 	 

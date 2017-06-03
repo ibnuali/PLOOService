@@ -1,9 +1,19 @@
+/*
+ * Author : Fadhlan Ridhwanallah
+ * Date : 31 Maret 2017
+ * Modified : 4 Juni 2017
+ */
+
 package com.service.player.controller;
+
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.service.player.model.Player;
@@ -15,7 +25,7 @@ public class PlayerController {
 	@Autowired
     PlayerRepository player_repo;
 	
-	@RequestMapping(value="/signin/{username}/{password}",method = RequestMethod.GET)
+	@RequestMapping(value="/getbyusernamepassword/{username}/{password}",method = RequestMethod.GET)
     public Player signIn(@PathVariable String username, @PathVariable String password){
         Player result = new Player();
         result = player_repo.findByUsernamePass(username, password);
@@ -31,4 +41,18 @@ public class PlayerController {
     public Player fidn(@PathVariable String username){
 		return player_repo.findByUsername(username);
     }
+	
+	@RequestMapping(value="/insertplayer",method = RequestMethod.POST)
+	public @ResponseBody Player insertRatingfromPlayer(@RequestBody final Player inputPlayerData){
+        
+		Date localDate = new Date();
+		java.sql.Date sqlDateNow = new java.sql.Date(localDate.getTime());
+		
+		inputPlayerData.setCreated_at(sqlDateNow);
+		
+		Player outputPlayerData = new Player();
+		outputPlayerData = player_repo.save(inputPlayerData);
+		
+		return outputPlayerData;
+	}
 }
