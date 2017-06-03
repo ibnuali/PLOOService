@@ -1,3 +1,9 @@
+/*
+ * Author : Fadhlan Ridhwanallah
+ * Date : 31 Maret 2017
+ * Modified : 4 Juni 2017
+ */
+
 package com.service.rating.model;
 
 import javax.persistence.Column;
