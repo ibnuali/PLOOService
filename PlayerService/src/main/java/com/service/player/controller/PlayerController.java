@@ -38,7 +38,7 @@ public class PlayerController {
     }
 	
 	@RequestMapping(value="/getbyusername/{username}",method = RequestMethod.GET)
-    public Player fidn(@PathVariable String username){
+    public Player find(@PathVariable String username){
 		return player_repo.findByUsername(username);
     }
 	
