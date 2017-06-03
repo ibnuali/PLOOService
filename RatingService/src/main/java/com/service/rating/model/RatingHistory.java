@@ -5,6 +5,8 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,8 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Entity
 @Table(name = "rating_history")
 public class RatingHistory {
+	
 	@Id
 	@Column(name = "id_rating_history")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_rating_history;
 	
 	@Column(name = "id_player")
@@ -115,6 +119,7 @@ public class RatingHistory {
 	public RatingHistory(int _id_player, int _id_games, String _id_expert, int _player_give, Date _date_rating, Rating _score, RatingCategory _short_category){
 		this.id_player = _id_player;
 		this.id_games = _id_games;
+		this.id_expert_judgement  = _id_expert;
 		this.player_give_rating = _player_give;
 		this.date_rating_history = _date_rating;
 		this.score_rating = _score;

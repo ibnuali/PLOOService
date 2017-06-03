@@ -2,6 +2,8 @@ package com.service.rating.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class PlayerRating {
 	
 	private double DEF;
@@ -10,39 +12,57 @@ public class PlayerRating {
 	private double SHT;
 	private double PHY;
 	private double PAS;
+	
+	@JsonProperty("DEF")
 	public double getDEF() {
 		return DEF;
 	}
+	@JsonProperty("DEF")
 	public void setDEF(double dEF) {
 		DEF = dEF;
 	}
+	
+	@JsonProperty("SPD")
 	public double getSPD() {
 		return SPD;
 	}
+	@JsonProperty("SPD")
 	public void setSPD(double sPD) {
 		SPD = sPD;
 	}
+	
+	@JsonProperty("DRI")
 	public double getDRI() {
 		return DRI;
 	}
+	@JsonProperty("DRI")
 	public void setDRI(double dRI) {
 		DRI = dRI;
 	}
+	
+	@JsonProperty("SHT")
 	public double getSHT() {
 		return SHT;
 	}
+	@JsonProperty("SHT")
 	public void setSHT(double sHT) {
 		SHT = sHT;
 	}
+	
+	@JsonProperty("PHY")
 	public double getPHY() {
 		return PHY;
 	}
+	@JsonProperty("PHY")
 	public void setPHY(double pHY) {
 		PHY = pHY;
 	}
+	
+	@JsonProperty("PAS")
 	public double getPAS() {
 		return PAS;
 	}
+	@JsonProperty("PAS")
 	public void setPAS(double pAS) {
 		PAS = pAS;
 	}
@@ -66,6 +86,7 @@ public class PlayerRating {
 	}
 	
 	public void CalculatePlayerRating(List<RatingHistory> ratingHistory){
+		System.out.print(ratingHistory.size());
 		for(RatingHistory ratinghistory : ratingHistory){
 			if(ratinghistory.getShort_rating_category().getShort_rating_category().equals("DEF")){
 				this.DEF = this.DEF + ratinghistory.getScore_rating().getScore_rating();

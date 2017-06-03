@@ -1,13 +1,9 @@
 package com.service.rating.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,29 +49,24 @@ public class RatingHistoryController {
 	
 	@RequestMapping(value="/insertrating",method = RequestMethod.POST)
 	public @ResponseBody String insertRatingfromPlayer(@RequestBody final ArrayNode inputRatingHistory){
-		Configuration configuration=new Configuration();  
-        configuration.configure();  
-        ServiceRegistry sr= new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).getBootstrapServiceRegistry();  
-        SessionFactory sf=configuration.buildSessionFactory(sr); 
         
 		Date localDate = new Date();
 		java.sql.Date sqlDateNow = new java.sql.Date(localDate.getTime());
+		
 		RatingHistory ratingHistory = new RatingHistory();
+		List<RatingHistory> listRatingHistory = new ArrayList<>();
 		
 		for(JsonNode ratingHistoryNode : inputRatingHistory){
 			Rating ratingScore = rating_repo.findById(ratingHistoryNode.get("score_rating").asDouble());
 			RatingCategory ratingCategory = ratingcategory_repo.findRatingPlayer(ratingHistoryNode.get("short_rating_category").asText());
 			System.out.print(ratingCategory.getShort_rating_category());
-			
-			Session ss=sf.openSession();  
-	        ss.beginTransaction();  
 	          
 			ratingHistory = new RatingHistory(ratingHistoryNode.get("id_player").asInt(),ratingHistoryNode.get("id_games").asInt(), null,ratingHistoryNode.get("player_give_rating").asInt(),sqlDateNow,ratingScore,ratingCategory);
-			ratinghistory_repo.save(ratingHistory);
-			
-			ss.getTransaction().commit();  
-	        ss.close();
+			listRatingHistory.add(ratingHistory);
 		}
+		
+		ratinghistory_repo.save(listRatingHistory);
+		
 		return "Insert Success";
 	}
 	
