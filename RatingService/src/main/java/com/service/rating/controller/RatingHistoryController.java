@@ -57,7 +57,7 @@ public class RatingHistoryController {
 	public @ResponseBody String insertRatingfromPlayer(@RequestBody final ArrayNode inputRatingHistory){
         
 		Date localDate = new Date();
-		java.sql.Date sqlDateNow = new java.sql.Date(localDate.getTime());
+		java.sql.Timestamp sqlDateNow = new java.sql.Timestamp(localDate.getTime());
 		
 		RatingHistory ratingHistory = new RatingHistory();
 		List<RatingHistory> listRatingHistory = new ArrayList<>();

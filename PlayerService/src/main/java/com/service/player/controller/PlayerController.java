@@ -46,7 +46,7 @@ public class PlayerController {
 	public @ResponseBody Player insertRatingfromPlayer(@RequestBody final Player inputPlayerData){
         
 		Date localDate = new Date();
-		java.sql.Date sqlDateNow = new java.sql.Date(localDate.getTime());
+		java.sql.Timestamp sqlDateNow = new java.sql.Timestamp(localDate.getTime());
 		
 		inputPlayerData.setCreated_at(sqlDateNow);
 		

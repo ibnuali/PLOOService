@@ -1,6 +1,7 @@
 package com.service.team.model;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ public class JoinTeam {
 	private int id_player;
 	
 	@Column(name = "date_join_team")
-	private Date date_join_team;
+	private Timestamp date_join_team;
 	
 	@Column(name = "status_join_team")
 	private int status_join_team;
@@ -35,7 +36,7 @@ public class JoinTeam {
 	private int official_status_team;
 	
 	@Column(name = "date_official_team")
-	private Date date_official_team;
+	private Timestamp date_official_team;
 	
 	@Autowired
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -58,11 +59,11 @@ public class JoinTeam {
 		this.id_player = id_player;
 	}
 
-	public Date getDate_join_team() {
+	public Timestamp getDate_join_team() {
 		return date_join_team;
 	}
 
-	public void setDate_join_team(Date date_join_team) {
+	public void setDate_join_team(Timestamp date_join_team) {
 		this.date_join_team = date_join_team;
 	}
 
@@ -82,11 +83,11 @@ public class JoinTeam {
 		this.official_status_team = official_status_team;
 	}
 
-	public Date getDate_official_team() {
+	public Timestamp getDate_official_team() {
 		return date_official_team;
 	}
 
-	public void setDate_official_team(Date date_official_team) {
+	public void setDate_official_team(Timestamp date_official_team) {
 		this.date_official_team = date_official_team;
 	}
 

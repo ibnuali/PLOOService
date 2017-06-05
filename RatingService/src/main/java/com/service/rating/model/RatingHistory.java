@@ -6,7 +6,7 @@
 
 package com.service.rating.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,7 +42,7 @@ public class RatingHistory {
 	private int player_give_rating;
 	
 	@Column(name = "date_rating_history")
-	private Date date_rating_history;
+	private Timestamp date_rating_history;
 	
 	@Autowired
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -94,11 +94,11 @@ public class RatingHistory {
 		this.player_give_rating = player_give_rating;
 	}
 
-	public Date getDate_rating_history() {
+	public Timestamp getDate_rating_history() {
 		return date_rating_history;
 	}
 
-	public void setDate_rating_history(Date date_rating_history) {
+	public void setDate_rating_history(Timestamp date_rating_history) {
 		this.date_rating_history = date_rating_history;
 	}
 
@@ -122,7 +122,7 @@ public class RatingHistory {
 		
 	}
 	
-	public RatingHistory(int _id_player, int _id_games, String _id_expert, int _player_give, Date _date_rating, Rating _score, RatingCategory _short_category){
+	public RatingHistory(int _id_player, int _id_games, String _id_expert, int _player_give, Timestamp _date_rating, Rating _score, RatingCategory _short_category){
 		this.id_player = _id_player;
 		this.id_games = _id_games;
 		this.id_expert_judgement  = _id_expert;

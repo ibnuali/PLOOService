@@ -1,5 +1,6 @@
 package com.service.team.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -30,10 +31,10 @@ public class Team {
 	private Date team_established;
 	
 	@Column(name = "team_created")
-	private Date team_created;
+	private Timestamp team_created;
 	
 	@Column(name = "team_update")
-	private Date team_update;
+	private Timestamp team_update;
 
 	public int getId_team() {
 		return id_team;
@@ -79,15 +80,15 @@ public class Team {
 		return team_created;
 	}
 
-	public void setTeam_created(Date team_created) {
+	public void setTeam_created(Timestamp team_created) {
 		this.team_created = team_created;
 	}
 
-	public Date getTeam_update() {
+	public Timestamp getTeam_update() {
 		return team_update;
 	}
 
-	public void setTeam_update(Date team_update) {
+	public void setTeam_update(Timestamp team_update) {
 		this.team_update = team_update;
 	}
 	
