@@ -14,6 +14,7 @@ import com.service.location.repository.CountryRepository;
 import com.service.location.repository.ProvinceRepository;
 
 @RestController
+@RequestMapping(value="/province")
 public class ProvinceController {
 	@Autowired
 	ProvinceRepository prov_repo;
@@ -21,19 +22,19 @@ public class ProvinceController {
 	@Autowired
 	CountryRepository coun_repo;
 	
-	@RequestMapping(value = "/getProvinceByCountry/{id_country}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getbycountry/{id_country}", method = RequestMethod.GET)
 	public List<Province> findByCountry(@PathVariable int id_country){
 		Country country = new Country();
 		country = coun_repo.findById(id_country);
 		return prov_repo.findByCountry(country);
 	}
 	
-	@RequestMapping(value = "/getAllProvince")
+	@RequestMapping(value = "/getall")
 	public List<Province> findAll(){
 		return prov_repo.findAll();
 	}
 	
-	@RequestMapping(value = "/getProvince/{id_province}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getprovince/{id_province}", method = RequestMethod.GET)
 	public Province findById(@PathVariable int id_province){
 		return prov_repo.findById(id_province);
 	}

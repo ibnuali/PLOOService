@@ -13,6 +13,7 @@ import com.service.position.repository.PositionPlayerRepository;
 import com.service.position.repository.PositionRepository;
 
 @RestController
+@RequestMapping(value="/playerposition")
 public class PlayerPosition {
 	@Autowired
 	PositionRepository positionrepo;
@@ -20,7 +21,7 @@ public class PlayerPosition {
 	@Autowired
 	PositionPlayerRepository positionplayerrepo;
 	
-	@RequestMapping(value="/findpositionbyplayer/{id_player}", method = RequestMethod.GET)
+	@RequestMapping(value="/getbyplayer/{id_player}", method = RequestMethod.GET)
 	public List<PositionPlayer> findPositonByPlayer(@PathVariable int id_player){	
 		return positionplayerrepo.findById(id_player);
 	}

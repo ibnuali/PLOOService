@@ -13,6 +13,7 @@ import com.service.level.repository.LevelHistoryRepository;
 import com.service.level.repository.LevelRepository;
 
 @RestController
+@RequestMapping(value="/levelhistory")
 public class LevelHistoryController {
 	@Autowired
 	LevelHistoryRepository levelHistoryRepo;
@@ -20,7 +21,7 @@ public class LevelHistoryController {
 	@Autowired
 	LevelRepository levelRepository;
 	
-	@RequestMapping(value="/findLevelByPlayer/{id_player}", method = RequestMethod.GET)
+	@RequestMapping(value="/getbyplayer/{id_player}", method = RequestMethod.GET)
 	public List<LevelHistory> findLevelByPlayer(@PathVariable int id_player){	
 		return levelHistoryRepo.findLevelByPlayer(id_player);
 	}

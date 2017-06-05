@@ -12,16 +12,17 @@ import com.service.location.model.Country;
 import com.service.location.repository.CountryRepository;
 
 @RestController
+@RequestMapping(value="/country")
 public class CountryController {
 	@Autowired
 	CountryRepository repository;
 	
-	@RequestMapping(value = "/getAllCountry")
+	@RequestMapping(value = "/getall")
 	public List<Country> findAll(){
 		return repository.findAll();
 	}
 	
-	@RequestMapping(value = "/getCountry/{id_country}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getcountry/{id_country}", method = RequestMethod.GET)
 	public Country findById(@PathVariable int id_country){	
 		return repository.findById(id_country);
 	}

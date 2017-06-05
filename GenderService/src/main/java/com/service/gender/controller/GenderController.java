@@ -11,11 +11,12 @@ import com.service.gender.model.GenderModel;
 import com.service.gender.repository.GenderRepository;
 
 @RestController
+@RequestMapping(value="/gender")
 public class GenderController {
 	@Autowired
 	GenderRepository genderRepo;
 	
-	@RequestMapping(value="/findall/", method = RequestMethod.GET)
+	@RequestMapping(value="/getall/", method = RequestMethod.GET)
 	public List<GenderModel> findAll(){
 		return genderRepo.findAll();
 	}

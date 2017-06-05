@@ -14,6 +14,7 @@ import com.service.location.repository.CityRepository;
 import com.service.location.repository.ProvinceRepository;
 
 @RestController
+@RequestMapping(value="/city")
 public class CityController{
 	
 	@Autowired
@@ -22,14 +23,14 @@ public class CityController{
 	@Autowired
 	ProvinceRepository prov_repo;
 	
-	@RequestMapping(value="/getCityByProvince/{id_province}", method = RequestMethod.GET)
+	@RequestMapping(value="/getbyprovince/{id_province}", method = RequestMethod.GET)
 	public List<City> findByProvince(@PathVariable int id_province){
 		Province prov = new Province();
 		prov = prov_repo.findById(id_province);
 		return city_repo.findByProvince(prov);
 	}
 	
-	@RequestMapping(value="/getAllCity")
+	@RequestMapping(value="/getall")
 	public List<City> findAll(){
 		return city_repo.findAll();
 	}

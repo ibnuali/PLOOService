@@ -12,11 +12,12 @@ import com.service.achievement.model.AchievementPlayer;
 import com.service.achievement.repository.AchievementPlayerRepository;
 
 @RestController
+@RequestMapping(value="/playerachievement")
 public class AchievementPlayerController {
 	@Autowired
 	AchievementPlayerRepository achievPlayer_Repo;
 	
-	@RequestMapping(value="/findbyplayer/{id_player}", method = RequestMethod.GET)
+	@RequestMapping(value="/getbyplayer/{id_player}", method = RequestMethod.GET)
 	public List<AchievementPlayer> findAchivmentByPlayer(@PathVariable int id_player){
 		return achievPlayer_Repo.findAchivmentByPlayer(id_player);
 	}

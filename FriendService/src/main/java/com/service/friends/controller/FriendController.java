@@ -12,22 +12,18 @@ import com.service.friends.model.Friend;
 import com.service.friends.repository.FriendRepository;
 
 @RestController
+@RequestMapping(value="/friend")
 public class FriendController {
 	@Autowired
 	FriendRepository friendRepo;
 	
-	@RequestMapping(value="/findall/", method = RequestMethod.GET)
+	@RequestMapping(value="/getall/", method = RequestMethod.GET)
 	public List<Friend> findAll(){
 		return friendRepo.findAll();
 	}
 	
-	@RequestMapping(value="/findfriendplayer1/{id_player1}", method = RequestMethod.GET)
+	@RequestMapping(value="/getbyplayer1/{id_player1}", method = RequestMethod.GET)
 	public List<Friend> findFriend1(@PathVariable int id_player1){	
 		return friendRepo.findFriendByPlayer1(id_player1);
-	}
-	
-	@RequestMapping(value="/findfriendplayer2/{id_player2}", method = RequestMethod.GET)
-	public List<Friend> findFriendByPlayer2(@PathVariable int id_player2){	
-		return friendRepo.findFriendByPlayer2(id_player2);
 	}
 }
