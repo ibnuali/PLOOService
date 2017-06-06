@@ -1,29 +1,11 @@
-package com.service.match.model;
+package api.gateway.futsalkeun.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-@Entity
-@Table(name = "line_up")
 public class LineUp {
 	
-	@Id
-	@Column(name = "id_line_up")
 	private int id_line_up;
 	
-	@Column(name = "id_player")
 	private int id_player;
 	
-	@Autowired
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "id_games")
 	private FriendlyMatch id_games;
 	
 	public int getId_line_up() {
